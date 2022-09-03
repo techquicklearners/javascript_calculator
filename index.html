@@ -1,0 +1,101 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First JavaScript Project - Calculator</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: black;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+      }
+      .btn {
+        width: 35px;
+        color: beige;
+        padding: 8px 15px;
+        border: blue 1px solid;
+        float: left;
+        cursor: pointer;
+        font-size: 40px;
+        margin: 3px;
+      }
+      .calculator {
+        width: 300px;
+        height: 450px;
+        background-color: blue;
+      }
+      .screen {
+        background-color: yellow;
+        height: 100px;
+      }
+      .input {
+        height: 300px;
+      }
+      .operation {
+        text-align: right;
+        font-size: 30px;
+        padding: 5px 10px;
+      }
+      .lastoperatnd {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="calculator">
+        <div class="screen">
+          <div class="operation"></div>
+          <div class="lastoperatnd"></div>
+        </div>
+        <div class="input">
+          <div class="btn" onclick="Operation('+')">+</div>
+          <div class="btn" onclick="Operation('-')">-</div>
+          <div class="btn" onclick="Operation('*')">*</div>
+          <div class="btn" onclick="Operation('/')">/</div>
+          <div class="btn" onclick="InputFun('1')">1</div>
+          <div class="btn" onclick="InputFun('2')">2</div>
+          <div class="btn" onclick="InputFun('3')">3</div>
+          <div class="btn" onclick="InputFun('4')">4</div>
+          <div class="btn" onclick="InputFun('5')">5</div>
+          <div class="btn" onclick="InputFun('61')">6</div>
+          <div class="btn" onclick="InputFun('7')">7</div>
+          <div class="btn" onclick="InputFun('8')">8</div>
+          <div class="btn" onclick="InputFun('9')">9</div>
+          <div class="btn" onclick="InputFun('0')">0</div>
+          <div class="btn" onclick="InputFun('.')">.</div>
+          <div class="btn" onclick="clearAll()">C</div>
+          <div class="btn" onclick="result()">=</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function clearAll() {
+        document.querySelector(".operation").innerHTML = "";
+      }
+      function result() {
+        let operation = document.querySelector(".operation");
+        operation.innerHTML = eval(operation.innerHTML);
+      }
+      function InputFun(input) {
+        let operation = document.querySelector(".operation");
+        let lastoperatnd = document.querySelector(".lastoperatnd");
+        operation.innerHTML += input;
+        lastoperatnd.innerHTML = "";
+      }
+      function Operation(optr) {
+        let operation = document.querySelector(".operation");
+        let lastoperatnd = document.querySelector(".lastoperatnd");
+        if (operation.innerHTML != "" && lastoperatnd.innerHTML == "") {
+          operation.innerHTML += optr;
+          lastoperatnd.innerHTML = optr;
+        }
+      }
+    </script>
+  </body>
+</html>
